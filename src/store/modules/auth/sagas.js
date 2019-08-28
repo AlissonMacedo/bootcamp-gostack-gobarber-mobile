@@ -2,7 +2,6 @@ import {Alert} from 'react-native';
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 
 import api from '~/services/api';
-
 import {signInSuccess, signFailure} from './actions';
 
 export function* signIn({payload}) {
@@ -19,7 +18,7 @@ export function* signIn({payload}) {
     if (user.provider) {
       Alert.alert(
         'Erro no login',
-        'o usuário não pode ser prestador de serviços',
+        'O usuário não pode ser prestador de serviços',
       );
       return;
     }
@@ -28,11 +27,11 @@ export function* signIn({payload}) {
 
     yield put(signInSuccess(token, user));
 
-    //   history.push('/dashboard');
-  } catch (err) {
+    // history.push('/dashboard');
+  } catch (error) {
     Alert.alert(
       'Falha na autenticação',
-      'ouve um erro no login, verifique seus dados.',
+      'Houve um erro no login, verifique seus dados',
     );
     yield put(signFailure());
   }
@@ -46,15 +45,13 @@ export function* signUp({payload}) {
       name,
       email,
       password,
-      provider: true,
     });
 
-    //   history.push('/');
-  } catch (err) {
-    console.log(err);
+    // history.push('/');
+  } catch (error) {
     Alert.alert(
       'Falha no cadastro',
-      'ouve um erro no cadastro, verifique seus dados.',
+      'Houve um erro no cadastro, verifique seus dados',
     );
 
     yield put(signFailure());
@@ -73,13 +70,8 @@ export function setToken({payload}) {
   }
 }
 
-export function signOut() {
-  //  history.push('/');
-}
-
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
-  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
