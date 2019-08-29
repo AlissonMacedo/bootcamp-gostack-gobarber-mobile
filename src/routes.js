@@ -8,15 +8,15 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import SignIn from '~/pages/SignIn';
-import SignUp from '~/pages/SignUp';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
-import SelectProvider from './pages/New/SelectProvider';
-import SelectDateTime from './pages/New/SelectDateTime';
-import Confirm from './pages/New/Confirm';
+import SelectProvider from '~/pages/New/SelectProvider';
+import SelectDateTime from '~/pages/New/SelectDateTime';
+import Confirm from '~/pages/New/Confirm';
 
-import Dashboard from '~/pages/Dashboard';
-import Profile from '~/pages/Profile';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -48,7 +48,7 @@ export default (isSigned = false) =>
               ),
               navigationOptions: {
                 tabBarVisible: false,
-                tabBarbel: 'Agendar',
+                tabBarLabel: 'Agendar',
                 tabBarIcon: (
                   <Icon
                     name="add-circle-outline"
@@ -61,6 +61,7 @@ export default (isSigned = false) =>
             Profile,
           },
           {
+            resetOnBlur: true,
             tabBarOptions: {
               keyboardHidesTabBar: true,
               activeTintColor: '#FFF',
