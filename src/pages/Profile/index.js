@@ -49,6 +49,10 @@ export default function Profile() {
     );
   }
 
+  function handleLogout() {
+    dispatch(signOut());
+  }
+
   return (
     <Background>
       <Container>
@@ -115,6 +119,7 @@ export default function Profile() {
           />
 
           <SubmitButton onPress={handleSubmit}>Atualizar perfil</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background>
