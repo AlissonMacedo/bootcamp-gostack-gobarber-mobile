@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { withNavigationFocus } from 'react-navigation';
+import {withNavigationFocus} from 'react-navigation';
 
 import api from '~/services/api';
 
 import Background from '~/components/Background';
 import Appointment from '~/components/Appointment';
 
-import { Container, Title, List } from './styles';
+import {Container, Title, List} from './styles';
 
-function Dashboard({ isFocused }) {
+function Dashboard({isFocused}) {
   const [appointments, setAppointments] = useState([]);
 
   async function loadAppointments() {
@@ -34,8 +34,8 @@ function Dashboard({ isFocused }) {
               ...appointment,
               canceled_at: response.data.canceled_at,
             }
-          : appointment
-      )
+          : appointment,
+      ),
     );
   }
 
@@ -47,7 +47,7 @@ function Dashboard({ isFocused }) {
         <List
           data={appointments}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <Appointment onCancel={() => handleCancel(item.id)} data={item} />
           )}
         />
@@ -58,7 +58,7 @@ function Dashboard({ isFocused }) {
 
 Dashboard.navigationOptions = {
   tabBarLabel: 'Agendamentos',
-  tabBarIcon: ({ tintColor }) => (
+  tabBarIcon: ({tintColor}) => (
     <Icon name="event" size={20} color={tintColor} />
   ),
 };

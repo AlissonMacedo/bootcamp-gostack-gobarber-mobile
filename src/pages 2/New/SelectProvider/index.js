@@ -33,7 +33,8 @@ export default function SelectProvider({navigation}) {
               <Avatar
                 source={{
                   uri: provider.avatar
-                    ? provider.avatar.url
+                    ? // ? provider.avatar.url
+                      `https://api.adorable.io/avatar/50/${provider.name}.png`
                     : `https://api.adorable.io/avatar/50/${provider.name}.png`,
                 }}
               />

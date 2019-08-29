@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
-import {Image} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useRef, useState } from 'react';
+import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from '~/assets/logo.png';
 
-import Background from '../components/Background';
-import {signInRequest} from '~/store/modules/auth/actions';
+import Background from '~/components/Background';
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import {
   Container,
@@ -16,7 +16,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default function SignIn({navigation}) {
+export default function SignIn({ navigation }) {
   const dispatch = useDispatch();
   const passwordRef = useRef();
 
@@ -50,7 +50,7 @@ export default function SignIn({navigation}) {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Senha senha secreta"
+            placeholder="Sua senha secreta"
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
