@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
@@ -7,9 +7,9 @@ import api from '~/services/api';
 import Background from '~/components/Background';
 import DateInput from '~/components/DateInput';
 
-import { Container, HourList, Hour, Title } from './styles';
+import {Container, HourList, Hour, Title} from './styles';
 
-export default function SelectDateTime({ navigation }) {
+export default function SelectDateTime({navigation}) {
   const [date, setDate] = useState(new Date());
   const [hours, setHours] = useState([]);
 
@@ -44,11 +44,10 @@ export default function SelectDateTime({ navigation }) {
           data={hours}
           extraData={date}
           keyExtractor={item => item.time}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <Hour
               onPress={() => handleSelectHour(item.value)}
-              enabled={item.available}
-            >
+              enabled={item.available}>
               <Title>{item.time}</Title>
             </Hour>
           )}
@@ -58,14 +57,13 @@ export default function SelectDateTime({ navigation }) {
   );
 }
 
-SelectDateTime.navigationOptions = ({ navigation }) => ({
+SelectDateTime.navigationOptions = ({navigation}) => ({
   title: 'Selecione o horário',
   headerLeft: () => (
     <TouchableOpacity
       onPress={() => {
         navigation.goBack();
-      }}
-    >
+      }}>
       <Icon name="chevron-left" size={20} color="#FFF" />
     </TouchableOpacity>
   ),
